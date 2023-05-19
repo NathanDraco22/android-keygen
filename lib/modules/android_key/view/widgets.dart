@@ -52,3 +52,31 @@ class DirPickWidget extends StatelessWidget {
   }
 
 }
+
+
+
+
+class TextKeyFormField extends StatelessWidget {
+  const TextKeyFormField({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: 40,
+      child: TextField(
+        decoration: InputDecoration(
+          filled: true,
+          labelText: "Soy un Label Text",
+          contentPadding: const EdgeInsets.symmetric(horizontal: 10),
+          border: const OutlineInputBorder(),
+          focusedBorder: OutlineInputBorder(
+            borderSide:const  BorderSide(width: 2,color: Colors.green),
+            borderRadius: BorderRadius.circular(10)
+          )
+        ),
+      ),
+    );
+  }
+}
