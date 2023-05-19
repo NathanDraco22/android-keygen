@@ -41,9 +41,9 @@ class KeygenForm extends StatelessWidget{
               ],
             ),
           ),
-          SizedBox(height: 20,),
+          SizedBox(height: 28,),
           TextKeyFormField(),
-          SizedBox(height: 15,),
+          SizedBox(height: 20,),
           TextKeyFormField(),
         ],
       )
