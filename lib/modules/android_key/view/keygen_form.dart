@@ -17,9 +17,9 @@ class KeygenForm extends StatelessWidget{
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      TextKeyFormField(),
-                      TextKeyFormField(),
-                      TextKeyFormField(),
+                      TextKeyFormField(labelText: "Company_Name",),
+                      TextKeyFormField(labelText: "Organizational_Unit",),
+                      TextKeyFormField(labelText: "Organization",),
           
                     ],
                   ),
@@ -30,11 +30,9 @@ class KeygenForm extends StatelessWidget{
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      TextKeyFormField(),
-                      TextKeyFormField(),
-                      TextKeyFormField(),
-          
-                      
+                      TextKeyFormField(labelText: "Location",),
+                      TextKeyFormField(labelText: "State/Province",),
+                      TextKeyFormField(labelText: "Country",),                     
                     ],
                   ),
                 )
@@ -42,9 +40,9 @@ class KeygenForm extends StatelessWidget{
             ),
           ),
           SizedBox(height: 28,),
-          TextKeyFormField(),
+          TextKeyFormField(labelText: "Store_Password",),
           SizedBox(height: 20,),
-          TextKeyFormField(),
+          TextKeyFormField(labelText: "Key_Password",),
         ],
       )
     );

@@ -59,7 +59,10 @@ class DirPickWidget extends StatelessWidget {
 class TextKeyFormField extends StatelessWidget {
   const TextKeyFormField({
     super.key,
+    this.labelText
   });
+
+  final String? labelText;
 
   @override
   Widget build(BuildContext context) {
@@ -68,7 +71,7 @@ class TextKeyFormField extends StatelessWidget {
       child: TextField(
         decoration: InputDecoration(
           filled: true,
-          labelText: "Soy un Label Text",
+          labelText: labelText,
           contentPadding: const EdgeInsets.symmetric(horizontal: 10),
           border: const OutlineInputBorder(),
           focusedBorder: OutlineInputBorder(

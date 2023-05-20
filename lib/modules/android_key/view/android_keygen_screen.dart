@@ -11,7 +11,15 @@ class AndroidKeygenScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(elevation: 1, title: const Row(children: [Icon(Icons.android), Text("KeyGenerator")]),),
+      appBar: AppBar(
+        elevation: 1, 
+        centerTitle: true,
+        title: const Column(
+          children: [
+            Icon(Icons.android), 
+            Text("KeyGenerator")]
+          ),
+        ),
       body: Padding(
         padding:  const EdgeInsets.all(8.0),
         child: Column(
