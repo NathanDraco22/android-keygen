@@ -1,6 +1,7 @@
 
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 
 class DirPickWidget extends StatelessWidget {
@@ -59,16 +60,21 @@ class DirPickWidget extends StatelessWidget {
 class TextKeyFormField extends StatelessWidget {
   const TextKeyFormField({
     super.key,
-    this.labelText
+    this.labelText,
+    this.centerText = false,
+    this.noSpace = true
   });
 
   final String? labelText;
-
+  final bool centerText;
+  final bool noSpace;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       height: 40,
       child: TextField(
+        textAlign: centerText ? TextAlign.center : TextAlign.start,
+        inputFormatters: noSpace ? [FilteringTextInputFormatter.deny(" ")] : null,
         decoration: InputDecoration(
           filled: true,
           labelText: labelText,
