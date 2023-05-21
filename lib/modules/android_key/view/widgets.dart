@@ -89,3 +89,22 @@ class TextKeyFormField extends StatelessWidget {
     );
   }
 }
+
+
+
+class ValidSelector extends StatelessWidget {
+  const ValidSelector({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final values = List.generate(10, (index) => "${ (index + 1) * 1000 }");
+    return DropdownMenu(
+      trailingIcon: null,
+      onSelected: print,
+      label: const Text("Valid"),
+      dropdownMenuEntries: values.map(
+        (e) => DropdownMenuEntry(value: e, label: e)
+      ).toList()
+    );
+  }
+}
