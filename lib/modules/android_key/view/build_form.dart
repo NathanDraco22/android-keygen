@@ -6,6 +6,8 @@ class _BuildForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final viewModel = ViewModel.of(context);
+    final formMediatior = viewModel.formMediator;
     return  Padding(
       padding:  const EdgeInsets.all(4.0),
       child: Align(
@@ -14,7 +16,7 @@ class _BuildForm extends StatelessWidget {
           padding: const EdgeInsets.all(4.0),
           child: Row(
             children: [
-               const Flexible(
+              Flexible(
                 flex: 5,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -22,13 +24,18 @@ class _BuildForm extends StatelessWidget {
                 children: [
                   TextKeyFormField(
                     labelText: "Alias",
-                    centerText: true
+                    centerText: true,
+                    onChanged: (value) => formMediatior.alias = value,
                   ),
                    Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      RSASelector(),
-                      ValidSelector()
+                      RSASelector(
+                        onSelected: (p0) => formMediatior.rsa = p0,
+                      ),
+                      ValidSelector(
+                        onSelected: (p0) => formMediatior.valid = p0,
+                      )
                     ],
                   )
                 ],
@@ -39,7 +46,7 @@ class _BuildForm extends StatelessWidget {
                 child: Center(
                   child: FilledButton(
                     onPressed: () {
-                      
+                      viewModel.executeKeyGen();
                     }, 
                     child: const Row(
                       mainAxisSize: MainAxisSize.min,

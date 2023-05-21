@@ -8,11 +8,12 @@ class _PathSelectors extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
+    final formMediator = ViewModel.of(context).formMediator;
+    return Column(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
-         DirPickWidget(textLabel: "JDK path" ,onDirPicked: print,),
-         DirPickWidget(textLabel: "Output path" ,onDirPicked: print,),
+         DirPickWidget(textLabel: "JDK path" ,onDirPicked:(path) => formMediator.jdkPath = path, ),
+         DirPickWidget(textLabel: "Output path" ,onDirPicked: (path) => formMediator.outputPath = path,),
       ],
     );
   }
