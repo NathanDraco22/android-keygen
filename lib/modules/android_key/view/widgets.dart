@@ -62,12 +62,15 @@ class TextKeyFormField extends StatelessWidget {
     super.key,
     this.labelText,
     this.centerText = false,
-    this.noSpace = true
+    this.noSpace = true,
+    this.icon
   });
 
   final String? labelText;
   final bool centerText;
   final bool noSpace;
+  final Widget? icon;
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -76,6 +79,7 @@ class TextKeyFormField extends StatelessWidget {
         textAlign: centerText ? TextAlign.center : TextAlign.start,
         inputFormatters: noSpace ? [FilteringTextInputFormatter.deny(" ")] : null,
         decoration: InputDecoration(
+          icon: icon,
           filled: true,
           labelText: labelText,
           contentPadding: const EdgeInsets.symmetric(horizontal: 10),

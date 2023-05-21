@@ -31,8 +31,8 @@ class KeygenForm extends StatelessWidget{
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       TextKeyFormField(labelText: "Location",),
-                      TextKeyFormField(labelText: "State/Province",),
-                      TextKeyFormField(labelText: "Country",),                     
+                      TextKeyFormField(labelText: "State/Province/Country",),
+                      TextKeyFormField(labelText: "Country-Code",),                     
                     ],
                   ),
                 )
@@ -40,9 +40,9 @@ class KeygenForm extends StatelessWidget{
             ),
           ),
           SizedBox(height: 28,),
-          TextKeyFormField(labelText: "Store_Password",),
+          TextKeyFormField(labelText: "Store_Password", icon: Icon(Icons.lock_outline),),
           SizedBox(height: 20,),
-          TextKeyFormField(labelText: "Key_Password",),
+          TextKeyFormField(labelText: "Key_Password", icon:  Icon(Icons.lock_person),),
         ],
       )
     );
