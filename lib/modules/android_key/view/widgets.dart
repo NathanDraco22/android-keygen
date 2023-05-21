@@ -63,7 +63,8 @@ class TextKeyFormField extends StatelessWidget {
     this.labelText,
     this.centerText = false,
     this.noSpace = true,
-    this.icon
+    this.icon,
+    this.onChanged
   });
 
   final String? labelText;
@@ -71,11 +72,14 @@ class TextKeyFormField extends StatelessWidget {
   final bool noSpace;
   final Widget? icon;
 
+  final void Function(String value)? onChanged;
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       height: 40,
       child: TextField(
+        onChanged: onChanged,
         textAlign: centerText ? TextAlign.center : TextAlign.start,
         inputFormatters: noSpace ? [FilteringTextInputFormatter.deny(" ")] : null,
         decoration: InputDecoration(
@@ -95,16 +99,42 @@ class TextKeyFormField extends StatelessWidget {
 }
 
 
+class RSASelector extends StatelessWidget {
+  const RSASelector({super.key, this.onSelected});
+
+  final void Function(String?)? onSelected;
+
+  @override
+  Widget build(BuildContext context) {
+    return DropdownMenu(
+      onSelected: onSelected,
+      label: const Text("RSA"),
+      dropdownMenuEntries: const [
+        DropdownMenuEntry(
+          value: "1024", 
+          label: "1024"
+        ),
+        DropdownMenuEntry(
+          value: "2048", 
+          label: "2048"
+        ),
+
+      ]
+    );
+  }
+}
 
 class ValidSelector extends StatelessWidget {
-  const ValidSelector({super.key});
+  const ValidSelector({super.key, this.onSelected});
+
+  final void Function(String?)? onSelected;
 
   @override
   Widget build(BuildContext context) {
     final values = List.generate(10, (index) => "${ (index + 1) * 1000 }");
     return DropdownMenu(
       trailingIcon: null,
-      onSelected: print,
+      onSelected: onSelected,
       label: const Text("Valid"),
       dropdownMenuEntries: values.map(
         (e) => DropdownMenuEntry(value: e, label: e)

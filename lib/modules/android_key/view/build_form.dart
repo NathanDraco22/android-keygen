@@ -14,7 +14,7 @@ class _BuildForm extends StatelessWidget {
           padding: const EdgeInsets.all(4.0),
           child: Row(
             children: [
-              const Flexible(
+               const Flexible(
                 flex: 5,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -24,7 +24,7 @@ class _BuildForm extends StatelessWidget {
                     labelText: "Alias",
                     centerText: true
                   ),
-                  Row(
+                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       RSASelector(),
@@ -60,25 +60,4 @@ class _BuildForm extends StatelessWidget {
 }
 
 
-class RSASelector extends StatelessWidget {
-  const RSASelector({super.key});
 
-  @override
-  Widget build(BuildContext context) {
-    return const DropdownMenu(
-      onSelected: print,
-      label: Text("RSA"),
-      dropdownMenuEntries: [
-        DropdownMenuEntry(
-          value: "1024", 
-          label: "1024"
-        ),
-        DropdownMenuEntry(
-          value: "2048", 
-          label: "2048"
-        ),
-
-      ]
-    );
-  }
-}
