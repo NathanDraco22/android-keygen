@@ -81,7 +81,7 @@ class TextKeyFormField extends StatelessWidget {
           contentPadding: const EdgeInsets.symmetric(horizontal: 10),
           border: const OutlineInputBorder(),
           focusedBorder: OutlineInputBorder(
-            borderSide:const  BorderSide(width: 2,color: Colors.green),
+            borderSide:  BorderSide(width: 2, color: Theme.of(context).colorScheme.primary),
             borderRadius: BorderRadius.circular(10)
           )
         ),
