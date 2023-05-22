@@ -56,8 +56,8 @@ class FormMediator {
   String? keyPass;
 
   String? alias;
-  String? rsa;
-  String? valid;
+  String? rsa = "2048";
+  String? valid = "10000";
 
     Map<String,dynamic> _createMap(){
     return {

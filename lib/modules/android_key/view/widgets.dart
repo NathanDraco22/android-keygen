@@ -107,6 +107,7 @@ class RSASelector extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DropdownMenu(
+      initialSelection: "2048",
       onSelected: onSelected,
       label: const Text("RSA"),
       dropdownMenuEntries: const [
@@ -133,6 +134,7 @@ class ValidSelector extends StatelessWidget {
   Widget build(BuildContext context) {
     final values = List.generate(10, (index) => "${ (index + 1) * 1000 }");
     return DropdownMenu(
+      initialSelection: "10000",
       trailingIcon: null,
       onSelected: onSelected,
       label: const Text("Valid"),

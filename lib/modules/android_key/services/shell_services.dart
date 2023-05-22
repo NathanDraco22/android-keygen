@@ -49,7 +49,7 @@ class ShellService {
     File newKey = File(paramModel.jdkPath + separator + name );
     File backedKey = File("${paramModel.jdkPath}$separator$name.old");
     await newKey.copy(paramModel.outputPath + separator + name);
-    await backedKey.copy("${paramModel.jdkPath}$separator$name.old");
+    await backedKey.copy("${paramModel.outputPath}$separator$name.old");
     await newKey.delete();
     await backedKey.delete();
     return null;
