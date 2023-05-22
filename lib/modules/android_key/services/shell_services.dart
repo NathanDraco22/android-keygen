@@ -6,7 +6,7 @@ import '../logic/view_model.dart';
 class ShellService {
 
 
-  Future<void> genKey( ParamsModel paramModel )async{
+  Future<String?> genKey( ParamsModel paramModel )async{
 
     const name = "algo.keystore";
 
@@ -25,34 +25,34 @@ class ShellService {
       "-keypass ${paramModel.keyPass}"
     ];
 
-      List<String>updateKeyCommand = [
+    List<String>updateKeyCommand = [
       "keytool",
       "-importkeystore",
       "-srckeystore $name",
       "-destkeystore $name",
       "-deststoretype pkcs12",
-      "-srcstorepass 123456"];
+      "-srcstorepass ${paramModel.storePass}"];
 
-      final createCommand = createKeyCommand.join(" ");
-      final updateCommand = updateKeyCommand.join(" ");
-
-      final shell = Shell().cd(paramModel.jdkPath);
-
-      await shell.run(createCommand);
-      await shell.run(updateCommand);
-
-      shell.kill();
-
-      File newKey = File(paramModel.jdkPath + r"\" + name );
-      File backedKey = File(paramModel.jdkPath + r"\" + "$name.old");
-
-      await newKey.copy(paramModel.outputPath + r"\" + name);
-      await backedKey.copy(paramModel.outputPath + r"\" + "$name.old");
-
-      await newKey.delete();
-      await backedKey.delete();
-
-
+    final createCommand = createKeyCommand.join(" ");
+    final updateCommand = updateKeyCommand.join(" ");
+    final shell = Shell().cd(paramModel.jdkPath);
+    final createRes = await shell.run(createCommand);
+    final updateRes = await shell.run(updateCommand);
+    if (createRes.first.exitCode != 0){
+      return "error during creation";
+    }
+    if (updateRes.first.exitCode != 0) {
+      return "error during updating";
+    }
+    shell.kill();
+    final separator = Platform.isWindows ? r"\" : "/";
+    File newKey = File(paramModel.jdkPath + separator + name );
+    File backedKey = File("${paramModel.jdkPath}$separator$name.old");
+    await newKey.copy(paramModel.outputPath + separator + name);
+    await backedKey.copy("${paramModel.jdkPath}$separator$name.old");
+    await newKey.delete();
+    await backedKey.delete();
+    return null;
 
   }
 
