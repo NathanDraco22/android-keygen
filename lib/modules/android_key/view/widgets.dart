@@ -10,7 +10,6 @@ class DirPickWidget extends StatelessWidget {
   final String textLabel;
   final void Function(String path) onDirPicked;
   
-
   @override
   Widget build(BuildContext context) {
     final controller = TextEditingController();
@@ -47,7 +46,6 @@ class DirPickWidget extends StatelessWidget {
             ),
           )
         ),
-
       ],
     );
   }
@@ -119,7 +117,6 @@ class RSASelector extends StatelessWidget {
           value: "2048", 
           label: "2048"
         ),
-
       ]
     );
   }
@@ -144,3 +141,41 @@ class ValidSelector extends StatelessWidget {
     );
   }
 }
+
+
+class FileExtensionSelector extends StatelessWidget {
+  const FileExtensionSelector({super.key, this.onSelected});
+
+  final void Function(String?)? onSelected;
+
+  @override
+  Widget build(BuildContext context) {
+    String current = ".jks";
+    return StatefulBuilder(
+      builder: (context, setState) {
+        return DropdownButton<String>(
+          padding: const EdgeInsets.symmetric(horizontal: 12),
+          value: current,
+          onChanged: (value) {
+            if(onSelected != null){
+              onSelected!(value);
+            }
+            setState(() => current = value!);
+          }, 
+          items: const [
+            DropdownMenuItem(
+              value: ".jks", 
+              child: Text(".jks")
+            ),
+
+            DropdownMenuItem(
+              value: ".keystore", 
+              child: Text(".keystore")
+            ),
+          ],
+        );
+      }
+    );
+  }
+}
+

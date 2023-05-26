@@ -46,18 +46,24 @@ class _BuildForm extends StatelessWidget {
                 child: Center(
                   child: FilledButton(
                     onPressed: () async {
-                      final result = await viewModel.executeKeyGen();
 
-                      if (!context.mounted) return;
-                      if(result == null ) return;
+                      showDialog(
+                        context: context, 
+                        builder: (context) => const GeneratorAlert(),
+                      );
 
-                         showDialog(
-                          context: context, 
-                          builder: (context) => AlertDialog(
-                            title: const Text("Error"),
-                            content: Text(result),
-                          ),
-                        );
+                      // final result = await viewModel.executeKeyGen();
+
+                      // if (!context.mounted) return;
+                      // if(result == null ) return;
+
+                      //    showDialog(
+                      //     context: context, 
+                      //     builder: (context) => AlertDialog(
+                      //       title: const Text("Error"),
+                      //       content: Text(result),
+                      //     ),
+                      //   );
                     }, 
                     child: const Row(
                       mainAxisSize: MainAxisSize.min,
