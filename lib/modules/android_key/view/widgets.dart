@@ -144,22 +144,21 @@ class ValidSelector extends StatelessWidget {
 
 
 class FileExtensionSelector extends StatelessWidget {
-  const FileExtensionSelector({super.key, this.onSelected});
+  const FileExtensionSelector({super.key, required this.onSelected});
 
-  final void Function(String?)? onSelected;
+  final void Function(String?) onSelected;
 
   @override
   Widget build(BuildContext context) {
     String current = ".jks";
+    onSelected(current);
     return StatefulBuilder(
       builder: (context, setState) {
         return DropdownButton<String>(
-          padding: const EdgeInsets.symmetric(horizontal: 12),
+          padding: const EdgeInsets.symmetric(horizontal: 12),  
           value: current,
           onChanged: (value) {
-            if(onSelected != null){
-              onSelected!(value);
-            }
+            onSelected(value);
             setState(() => current = value!);
           }, 
           items: const [

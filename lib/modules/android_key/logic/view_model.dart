@@ -7,26 +7,34 @@ class ViewModel extends InheritedWidget {
   final formMediator = FormMediator();
   final shellService = ShellService();
 
-  Future<String?> executeKeyGen()async{
+  Future<String?> executeKeyGen(ParamsModel paramsModel, String keyName)async{
+
+    return await shellService.genKey(paramsModel, keyName);
+
+  }
+
+  
+  (ParamsModel?, String) executeValidator() {
 
     final map = formMediator._createMap();
 
     for(final entry in  map.entries) {
       final MapEntry(:key, :value) = entry;
       if(value == null) {
-        return "the field $key is Empty";
+        return (null,"the field $key is Empty");
       }
     }
 
     final paramModel = ParamsModel.fromJsonMap(map);
 
     if (paramModel.keyPass.length < 6 || paramModel.storePass.length < 6 ){
-      return "Password greater than 6 character";
+      return (null ,"Password greater than 6 character");
     }
 
-    return await shellService.genKey(paramModel);
+    return (paramModel, "");
 
   }
+
 
 
   

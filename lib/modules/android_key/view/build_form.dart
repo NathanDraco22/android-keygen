@@ -47,23 +47,55 @@ class _BuildForm extends StatelessWidget {
                   child: FilledButton(
                     onPressed: () async {
 
-                      showDialog(
+                      final (model, msg) = viewModel.executeValidator();
+                      if(model == null){
+                        await showDialog(
+                          context: context, 
+                          builder: (context) => AlertDialog(
+                            title: const Text("Error"),
+                            content: Text(msg),
+                          ),
+                        );
+                        return;
+                      }
+
+                      final name = await showDialog<String>(
                         context: context, 
-                        builder: (context) => const GeneratorAlert(),
+                        builder: (context) => GeneratorAlert(paramsModel: model,),
                       );
 
-                      // final result = await viewModel.executeKeyGen();
+                      if(name == null) throw Exception("Name of key is null");
+                      if (!context.mounted) return;
 
-                      // if (!context.mounted) return;
-                      // if(result == null ) return;
+                      showDialog(
+                          context: context, 
+                          builder: (context) => const AlertDialog(
+                            title: Text("Creating Key"),
+                            content: SizedBox(
+                              width: 100,
+                              height: 100,
+                              child: Center(child: CircularProgressIndicator(),)
+                            ),
+                          ),
+                        );
 
-                      //    showDialog(
-                      //     context: context, 
-                      //     builder: (context) => AlertDialog(
-                      //       title: const Text("Error"),
-                      //       content: Text(result),
-                      //     ),
-                      //   );
+                      await viewModel.executeKeyGen(model, name);
+                      if (!context.mounted) return;
+                      Navigator.pop(context);
+                      final snackBar = SnackBar(
+                        duration: const Duration(seconds: 2),
+                        content: Row(
+                          children: [
+                            const Icon(Icons.check_circle_outline_outlined),
+                            const SizedBox(width: 20,),
+                            Text("$name created !", style: const TextStyle(color: Colors.white)),
+                          ],
+                        ),
+                        backgroundColor: Colors.green.shade800,
+                      );
+                      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+
+
                     }, 
                     child: const Row(
                       mainAxisSize: MainAxisSize.min,

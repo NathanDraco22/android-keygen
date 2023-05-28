@@ -6,9 +6,7 @@ import '../logic/view_model.dart';
 class ShellService {
 
 
-  Future<String?> genKey( ParamsModel paramModel )async{
-
-    const name = "algo.keystore";
+  Future<String?> genKey( ParamsModel paramModel, String name )async{
 
     List<String> createKeyCommand =  [
       "keytool", 
