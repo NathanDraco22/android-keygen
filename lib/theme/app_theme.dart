@@ -1,6 +1,3 @@
-
-
-
 import 'package:flutter/material.dart';
 
 class AppTheme {
@@ -40,16 +37,11 @@ class AppTheme {
   );
 
 
-
   ThemeData setTheme() => ThemeData(
         useMaterial3: true,
         brightness: Brightness.dark,
         colorScheme: flexSchemeDark
       );
-
-
-
-
 
 }
 

@@ -15,20 +15,11 @@ class AndroidKeygenScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return ViewModel(
       child: Scaffold(
-        appBar: AppBar(
-          elevation: 1, 
-          centerTitle: true,
-          title: const Column(
-            children: [
-              Icon(Icons.android), 
-              Text("KeyGenerator")]
-            ),
-          ),
+        appBar: const CustomAppBar(),
         body: Padding(
           padding:  const EdgeInsets.all(8.0),
           child: Column(
             children: [
-    
               const Flexible(
                 flex: 3,
                 child: Padding(
@@ -60,11 +51,35 @@ class AndroidKeygenScreen extends StatelessWidget {
                   child: const _BuildForm(),
                 )
               )
+
             ],
           ),
         )
       ),
     );
   }
+}
+
+class CustomAppBar extends StatelessWidget implements PreferredSizeWidget{
+  const CustomAppBar({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return AppBar(
+      leading: IconButton(icon: const Icon(Icons.close), onPressed: () => Navigator.pop(context)),
+      elevation: 1, 
+      centerTitle: true,
+      title: const Column(
+        children: [
+          Icon(Icons.android), 
+          Text("KeyGenerator")]
+        ),
+      );
+  }
+  
+  @override
+  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 }
 

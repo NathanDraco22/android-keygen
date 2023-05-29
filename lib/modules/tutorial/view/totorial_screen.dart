@@ -21,7 +21,6 @@ class TutorialScreen extends StatelessWidget {
             left: 4,
             child: _CloseButton()
           ),
-
         ],
       ),
     );
