@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:keytool_app/modules/android_key/view/android_keygen_screen.dart';
 import 'package:keytool_app/modules/home/view/home_screen.dart';
-import 'package:keytool_app/modules/tutorial/view/totorial_screen.dart';
 import 'package:keytool_app/theme/app_theme.dart';
-
 
 import 'package:window_manager/window_manager.dart';
 
