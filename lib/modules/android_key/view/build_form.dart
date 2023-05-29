@@ -46,7 +46,6 @@ class _BuildForm extends StatelessWidget {
                 child: Center(
                   child: FilledButton(
                     onPressed: () async {
-
                       final (model, msg) = viewModel.executeValidator();
                       if(model == null){
                         await showDialog(
@@ -94,8 +93,6 @@ class _BuildForm extends StatelessWidget {
                         backgroundColor: Colors.green.shade800,
                       );
                       ScaffoldMessenger.of(context).showSnackBar(snackBar);
-
-
                     }, 
                     child: const Row(
                       mainAxisSize: MainAxisSize.min,

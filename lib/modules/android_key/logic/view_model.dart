@@ -8,9 +8,7 @@ class ViewModel extends InheritedWidget {
   final shellService = ShellService();
 
   Future<String?> executeKeyGen(ParamsModel paramsModel, String keyName)async{
-
     return await shellService.genKey(paramsModel, keyName);
-
   }
 
   
@@ -32,12 +30,8 @@ class ViewModel extends InheritedWidget {
     }
 
     return (paramModel, "");
-
   }
 
-
-
-  
   static ViewModel of(BuildContext context) {
     return context.dependOnInheritedWidgetOfExactType<ViewModel>()!;
   }

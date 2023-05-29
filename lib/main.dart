@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:keytool_app/modules/android_key/view/android_keygen_screen.dart';
+import 'package:keytool_app/modules/home/view/home_screen.dart';
+import 'package:keytool_app/modules/tutorial/view/totorial_screen.dart';
 import 'package:keytool_app/theme/app_theme.dart';
 
 
@@ -10,7 +12,7 @@ void main() async {
   await windowManager.ensureInitialized();
   WindowOptions windowOptions = const WindowOptions(
     size:  Size(500, 700),
-    center: true,
+    // center: true,
     maximumSize: Size(500, 700)
   );
   windowManager.waitUntilReadyToShow(windowOptions,() async {
@@ -29,7 +31,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: AppTheme().setTheme(),
-      home: const AndroidKeygenScreen()
+      home: const HomeScreen()
     );
   }
 }
