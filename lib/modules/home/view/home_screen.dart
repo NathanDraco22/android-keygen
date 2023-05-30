@@ -10,6 +10,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: const Key("HomeScreen"),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

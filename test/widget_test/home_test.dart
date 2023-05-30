@@ -21,12 +21,14 @@ void main() {
       final findGeneratorButton = find.byKey(const ValueKey("generatorButton"));
       final findTutorialButton = find.byKey(const ValueKey("tutorialButton"));
       final findGithubButton = find.byKey(const ValueKey("githubButton"));
-  
+
+      final findAllButtons = find.bySubtype<FilledButton>();
       await widgetTester.pumpWidget(const MyApp());
 
       expect(findGeneratorButton, findsOneWidget);
       expect(findTutorialButton, findsOneWidget);
       expect(findGithubButton, findsOneWidget);
+      expect(findAllButtons, findsNWidgets(3));
     });
 
     testWidgets("test icons", (widgetTester) async{
