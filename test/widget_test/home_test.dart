@@ -16,7 +16,7 @@ void main() {
       expect(findImage, findsOneWidget);
     });
 
-    testWidgets("test Buttons", (widgetTester) async {
+    testWidgets("Test Buttons", (widgetTester) async {
 
       final findGeneratorButton = find.byKey(const ValueKey("generatorButton"));
       final findTutorialButton = find.byKey(const ValueKey("tutorialButton"));
@@ -31,7 +31,7 @@ void main() {
       expect(findAllButtons, findsNWidgets(3));
     });
 
-    testWidgets("test icons", (widgetTester) async{
+    testWidgets("Test icons", (widgetTester) async{
 
       final findKeyIcon = find.byIcon(Icons.key);
       final findTutoIcon = find.byIcon(Icons.book);

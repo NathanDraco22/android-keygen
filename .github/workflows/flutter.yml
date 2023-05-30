@@ -23,9 +23,11 @@ jobs:
             - name: check version
               run: |
                 flutter --version
+                
             - name: install dependencies
               run: |
                 flutter pub get
+
             - name: running test
               run: |
                 flutter test
