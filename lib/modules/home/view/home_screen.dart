@@ -21,9 +21,9 @@ class HomeScreen extends StatelessWidget {
                 children: [
                   ClipRRect(
                     borderRadius: BorderRadius.circular(100),
-                    child: Image.asset(
-                      "assets/images/android-watch.gif",
-                      scale: 4,
+                    child: const Image(
+                      image: AssetImage("assets/images/android-watch.gif"),
+                      height: 150,
                     ),
                   ),
                   Text("Android KeyStore Generator", style: Theme.of(context).textTheme.headlineLarge,)
@@ -35,6 +35,7 @@ class HomeScreen extends StatelessWidget {
               child: Column(
                 children: [
                   FilledButton.icon(
+                    key: const Key("generatorButton"),
                     onPressed: () => Navigator.push(context, MaterialPageRoute(
                       builder: (context) => const AndroidKeygenScreen(),
                     )), 
@@ -43,12 +44,14 @@ class HomeScreen extends StatelessWidget {
                   ),
                   const SizedBox(height: 30,),
                   FilledButton.icon(
+                    key: const Key("tutorialButton"),
                     onPressed: () => Navigator.push(context, _SidePageRoute(const TutorialScreen())), 
                     icon: const Icon(Icons.book), 
                     label: const Text("Tutorial")
                   ),
                   const SizedBox(height: 30,),
                   FilledButton.icon(
+                    key: const Key("githubButton"),
                     onPressed: () {
                       final Uri uri = Uri.parse("https://github.com/NathanDraco22/android-keygen");
                       launchUrl(uri, mode: LaunchMode.externalApplication);
