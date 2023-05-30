@@ -12,19 +12,46 @@ class HomeScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            FilledButton.icon(
-              onPressed: () => Navigator.push(context, MaterialPageRoute(
-                builder: (context) => const AndroidKeygenScreen(),
-              )), 
-              icon: const Icon(Icons.key), 
-              label: const Text("Generator")
+
+            Flexible(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(100),
+            
+                    child: Image.asset(
+                      "assets/images/android-watch.gif",
+                      scale: 4,
+                    ),
+                  ),
+                  Text("Android KeyStore Generator", style: Theme.of(context).textTheme.headlineLarge,)
+                ],
+              ),
             ),
-            const SizedBox(height: 30,),
-            FilledButton.icon(
-              onPressed: () => Navigator.push(context, _SidePageRoute(const TutorialScreen())), 
-              icon: const Icon(Icons.book), 
-              label: const Text("Tutorial")
+
+            Flexible(
+              child: Column(
+                children: [
+                  FilledButton.icon(
+                    onPressed: () => Navigator.push(context, MaterialPageRoute(
+                      builder: (context) => const AndroidKeygenScreen(),
+                    )), 
+                    icon: const Icon(Icons.key), 
+                    label: const Text("Generator")
+                  ),
+                  const SizedBox(height: 30,),
+                  FilledButton.icon(
+                    onPressed: () => Navigator.push(context, _SidePageRoute(const TutorialScreen())), 
+                    icon: const Icon(Icons.book), 
+                    label: const Text("Tutorial")
+                  ),
+                ],
+              ),
             ),
+
+
+            
           ],
         ),
       ),
