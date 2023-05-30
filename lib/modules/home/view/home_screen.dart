@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:keytool_app/modules/android_key/view/android_keygen_screen.dart';
 import 'package:keytool_app/modules/tutorial/view/totorial_screen.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -46,12 +48,21 @@ class HomeScreen extends StatelessWidget {
                     icon: const Icon(Icons.book), 
                     label: const Text("Tutorial")
                   ),
+                  const SizedBox(height: 30,),
+                  FilledButton.icon(
+                    onPressed: () {
+                      final Uri uri = Uri.parse("https://github.com/NathanDraco22/android-keygen");
+                      launchUrl(uri, mode: LaunchMode.externalApplication);
+                    },
+                    icon: const Icon(FontAwesomeIcons.github), 
+                    label: const Text("Github")
+                  ),
                 ],
               ),
             ),
 
 
-            
+
           ],
         ),
       ),
