@@ -74,9 +74,10 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget{
       title: const Column(
         children: [
           Icon(Icons.android), 
-          Text("KeyGenerator")]
-        ),
-      );
+          Text("KeyGenerator")
+        ]
+      ),
+    );
   }
   
   @override

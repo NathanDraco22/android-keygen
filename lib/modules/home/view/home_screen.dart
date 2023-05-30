@@ -21,7 +21,6 @@ class HomeScreen extends StatelessWidget {
                 children: [
                   ClipRRect(
                     borderRadius: BorderRadius.circular(100),
-            
                     child: Image.asset(
                       "assets/images/android-watch.gif",
                       scale: 4,
@@ -60,8 +59,6 @@ class HomeScreen extends StatelessWidget {
                 ],
               ),
             ),
-
-
 
           ],
         ),
