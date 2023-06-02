@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:keytool_app/modules/android_key/services/shell_services.dart';
+import 'package:keytool_app/modules/android_key/services/shell_services.interface.dart';
 
 class ViewModel extends InheritedWidget {
-  ViewModel({super.key, required Widget child}) : super(child: child);
+  const ViewModel(this.shellService, this.formMediator, {super.key, required Widget child}) : super(child: child);
 
-  final formMediator = FormMediator();
-  final shellService = ShellService();
+  final FormMediator formMediator;
+  final ShellAdapter shellService;
 
   Future<String?> executeKeyGen(ParamsModel paramsModel, String keyName)async{
     return await shellService.genKey(paramsModel, keyName);
@@ -26,7 +26,7 @@ class ViewModel extends InheritedWidget {
     final paramModel = ParamsModel.fromJsonMap(map);
 
     if (paramModel.keyPass.length < 6 || paramModel.storePass.length < 6 ){
-      return (null ,"Password greater than 6 character");
+      return (null ,"Password must be at least 6 characters");
     }
 
     return (paramModel, "");

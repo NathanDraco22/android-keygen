@@ -1,11 +1,13 @@
 import "dart:io";
+import 'package:keytool_app/modules/android_key/services/shell_services.interface.dart';
 import 'package:process_run/process_run.dart';
 
 import '../logic/view_model.dart';
 
-class ShellService {
+class ShellService implements ShellAdapter {
 
 
+  @override
   Future<String?> genKey( ParamsModel paramModel, String name )async{
 
     List<String> createKeyCommand =  [

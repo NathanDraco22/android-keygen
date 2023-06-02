@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:keytool_app/modules/android_key/services/shell_services.dart';
 import 'package:keytool_app/modules/android_key/view/alerts.dart';
 
 import 'widgets.dart';
@@ -14,6 +15,8 @@ class AndroidKeygenScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ViewModel(
+      ShellService(),
+      FormMediator(),
       child: Scaffold(
         appBar: const CustomAppBar(),
         body: Padding(
