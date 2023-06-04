@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:keytool_app/modules/tutorial/view/widgets.dart';
+
+part 'tuto_pages.dart';
 
 class TutorialScreen extends StatelessWidget {
   const TutorialScreen({super.key});
@@ -8,6 +11,7 @@ class TutorialScreen extends StatelessWidget {
     final controller = PageController();
     final (duration, curve) = (const Duration(milliseconds: 200), Curves.easeOutSine);
     return Scaffold(
+      backgroundColor: Colors.blueGrey.shade900,
       body: Stack(
         alignment: Alignment.center,
         children: [
@@ -23,6 +27,22 @@ class TutorialScreen extends StatelessWidget {
           ),
         ],
       ),
+    );
+  }
+}
+
+class _CustomPageView extends StatelessWidget {
+  const _CustomPageView({
+    required this.controller,
+  });
+
+  final PageController controller;
+
+  @override
+  Widget build(BuildContext context) {
+    return PageView(
+      controller: controller,
+      children: pages
     );
   }
 }
@@ -76,28 +96,4 @@ class _NavigationPages extends StatelessWidget {
     );
   }
 }
-
-class _CustomPageView extends StatelessWidget {
-  const _CustomPageView({
-    required this.controller,
-  });
-
-  final PageController controller;
-
-  @override
-  Widget build(BuildContext context) {
-    return PageView(
-      controller: controller,
-      children: [
-        Container(color: Colors.blueGrey,),
-        Container(color: Colors.green,),
-        Container(color: Colors.blue,),
-        Container(color: Colors.red,),
-      ],
-    );
-  }
-}
-
-
-
 

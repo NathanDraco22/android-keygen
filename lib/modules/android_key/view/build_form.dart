@@ -63,7 +63,7 @@ class _BuildForm extends StatelessWidget {
                         builder: (context) => GeneratorAlert(paramsModel: model,),
                       );
 
-                      if(name == null) throw Exception("Name of key is null");
+                      if(name == null) return;
                       if (!context.mounted) return;
 
                       showDialog(
