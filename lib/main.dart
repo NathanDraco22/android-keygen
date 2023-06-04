@@ -7,7 +7,9 @@ import 'package:window_manager/window_manager.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await windowManager.ensureInitialized();
+
   WindowOptions windowOptions = const WindowOptions(
+    title: "Android Keygen",
     size:  Size(500, 700),
     center: true,
     maximumSize: Size(500, 700)
