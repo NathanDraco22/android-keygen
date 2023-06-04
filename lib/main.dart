@@ -9,7 +9,7 @@ void main() async {
   await windowManager.ensureInitialized();
   WindowOptions windowOptions = const WindowOptions(
     size:  Size(500, 700),
-    // center: true,
+    center: true,
     maximumSize: Size(500, 700)
   );
   windowManager.waitUntilReadyToShow(windowOptions,() async {
